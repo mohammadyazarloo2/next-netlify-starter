@@ -1,0 +1,24 @@
+.homeContainer{
+    padding: 20px;
+    .homePage{
+        width: 100%;
+        .categories{
+            width: 100%;
+            height: auto;
+            background: whitesmoke;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            display: grid;
+            grid-template-columns: repeat(8,1fr);
+            padding: 20px;
+            row-gap: 10px;
+            column-gap: 10px;
+            .categoriesItem{
+                box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+                width: 100%;
+                height: 100px;
+                background: wheat;
+                margin: auto;
+            }
+        }
+    }
+}

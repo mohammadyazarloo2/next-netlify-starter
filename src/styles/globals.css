@@ -1,0 +1,25 @@
+@font-face {
+  font-family: javan;
+  src: url("./iran/eot/IRANSansWeb.eot");
+  src: url('./iran/eot/IRANSansWeb.eot?#iefix') format('arada-opentype'),
+  url('./iran/woff/IRANSansWeb.woff') format('woff'),
+  url('./iran/ttf/IRANSansWeb.ttf') format('truetype');
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: javan;
+  font-size: 95%;
+  height: 100vh;
+  box-sizing: content-box;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

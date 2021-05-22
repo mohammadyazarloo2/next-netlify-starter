@@ -1,0 +1,112 @@
+.mainHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    .right{
+        display: flex;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+        max-height: 100%;
+        ul{
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+            li{
+                cursor: pointer;
+                padding-right: 10px;
+                display: inline-block;
+                color: white;
+                &:hover{
+                    color: #ccc;
+                }
+            }
+        }
+        .logo{
+            cursor: pointer;
+            width: 8% !important;
+            height: 80% !important;
+        }
+    }
+    .left{
+        width: 50%;
+        height: 50%;
+        direction: ltr;
+        display: flex;
+        align-items: center;
+        .humberger{
+            margin-left: 20px;
+            margin-right: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            
+            svg{
+                font-size: 22px;
+                &:hover{
+                    color: darken(#fff,20%);
+                }
+            }
+        }
+        .search{
+            margin-left: 10px;
+            width: 40%;
+            height: 100%;
+            display: flex;
+            align-content: center;
+            direction: rtl;
+            label{
+                cursor: pointer;
+                background: #ccc;
+                width: 15%;
+                display: flex;
+                align-content: center;
+                text-align: center;
+                align-items: center;
+                border-radius: 0px 4px 4px 0px;
+                svg{
+                    width: 100%;
+                }
+            }
+            .searchInput{
+                direction: rtl;
+                width: 100%;
+                height: 100%;
+                outline: 0px;
+                border: 0px;
+                font-size: 17px;
+                border-radius: 4px 0px 0px 4px;
+            }
+        }
+    }
+    .sidebar{
+        position: fixed;
+        width: 30rem;
+        background: #ccc;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        transition: all ease-in-out .5s;
+        transform: translateX(-30rem);
+        .sidebarHead{
+            border-radius: 50%;
+            border: .1rem #000000 solid;
+            background: crimson;
+            width: 3rem;
+            height: 3rem;
+            font-size: 2rem;
+            padding-top: 0;
+            cursor: pointer;
+            position: absolute;
+            right: .5rem;
+            top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .sidebar.open{
+        transform: translateX(0);
+    }
+}
