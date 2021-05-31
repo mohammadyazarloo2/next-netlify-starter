@@ -23,3 +23,16 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+
+    .ant-modal-header{
+      background: linear-gradient(90deg,#ffaa00,#fdcd01) !important;
+      color: #fff;
+    }
+    .ant-modal-title{
+      color: #fff !important;
+    }
+    .ant-modal-close{
+      color: crimson !important;
+    }

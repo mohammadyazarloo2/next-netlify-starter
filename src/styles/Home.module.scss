@@ -1,3 +1,5 @@
+@import '_vars.module.scss';
+
 .container{
     display: grid;
     grid-template-areas: 
@@ -6,13 +8,13 @@
     "footer"
     ;
     grid-template-columns: 1fr;
-    grid-template-rows: 4rem 1fr 5rem;
+    grid-template-rows: 11rem 1fr 5rem;
     height: 100%;
     direction: rtl;
   }
   .header{
     grid-area: header;
-    background: black;
+    background: $main-color;
   }
   .main{
     grid-area: main;
@@ -21,5 +23,5 @@
   
   .footer{
     grid-area: footer;
-    background: chartreuse;
+    background: $main-color;
   }

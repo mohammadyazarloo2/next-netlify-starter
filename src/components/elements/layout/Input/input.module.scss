@@ -1,0 +1,72 @@
+@import "../../../../styles/_vars.module";
+
+.container {
+  position: relative;
+  .wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5em;
+    text-align: center;
+    transition-duration: 0.6s;
+    direction: rtl;
+    text-align: right;
+    color: $dark-main-color;
+    background-color: $gray !important;
+    &::placeholder {
+      text-align: center;
+    }
+    &.sm {
+      padding: 1em - 0.45em 1em;
+    }
+    &.md {
+      padding: 1em;
+    }
+    &.lg {
+      padding: 1em;
+    }
+    &.outline {
+      border: 1px solid $dark-main-color;
+      &.primary {
+        border-color: $dark-main-color;
+      }
+    }
+    &.normal {
+      border: unset;
+      background: unset;
+    }
+    &.fill {
+      background-color: $gray !important;
+      border: unset;
+
+      &.primary {
+        background-color: $dark-main-color;
+      }
+    }
+
+    &.rounded {
+      border-radius: 20em;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+
+    &.left {
+      left: 10px;
+    }
+
+    &.right {
+      right: 10px;
+    }
+
+    & > img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
