@@ -99,7 +99,6 @@ class Header extends React.Component {
               </div>
             </div>
             <div className={styles.middle} dir="rtl">
-              <p>
                 <Marquee
                   pauseOnHover={true}
                   direction="right"
@@ -113,7 +112,6 @@ class Header extends React.Component {
                   تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
                   کاربردی می باشد
                 </Marquee>
-              </p>
             </div>
             <div className={styles.left}>
               <div className={styles.humberger}>
@@ -148,7 +146,7 @@ class Header extends React.Component {
                   <input type="text" className={styles.searchInput} />
                 </div>
                 <ul>
-                  <button onClick={this.showRegisterModal}> عضویت</button>
+                  <Link href="/login"><button> عضویت</button></Link>
                   <li> ورود</li>
                 </ul>
               </div>

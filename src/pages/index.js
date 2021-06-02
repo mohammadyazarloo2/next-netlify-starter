@@ -1,30 +1,61 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Header from '../components/layout/Header'
-import styles from '../styles/Home.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import MainPage from '../components/main/MainPage'
+import Head from "next/head";
+import Image from "next/image";
+import Header from "../components/layout/Header";
+import styles from "../styles/Home.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import data from "faker";
+import Main from "../components/Main";
 
 export default function Home() {
   return (
     <>
-    <Head>
-      <title>our bissines page</title>
-    </Head>
-    <div className={styles.container}>
+      <Head>
+        <title>our bissines page</title>
+      </Head>
 
-      <header className={styles.header}>
-        <Header />
-      </header>
+      <Main>
+        <div className={styles.homeContainer}>
+          <div className={styles.homePage}>
+            <div className={styles.categories}>
+              <div className={styles.categoriesItem}>
+                <div className={styles.categoriesItemContent}>
+                  <div className={styles.img}>
+                    <img src={data.image.avatar()} />
+                  </div>
+                  <p className={styles.content}>{data.name.title()}</p>
+                </div>
+              </div>
 
-      <main className={styles.main}>
-        <MainPage />
-      </main>
+              <div className={styles.categoriesItem}>
+                <div className={styles.categoriesItemContent}>
+                  <div className={styles.img}>
+                    <img src={data.image.avatar()} />
+                  </div>
+                  <div className={styles.content}>{data.name.title()}</div>
+                </div>
+              </div>
 
-      <footer className={styles.footer}>
-        
-      </footer>
-    </div>
+              <div className={styles.categoriesItem}>
+                <div className={styles.categoriesItemContent}>
+                  <div className={styles.img}>
+                    <img src={data.image.avatar()} />
+                  </div>
+                  <div className={styles.content}>{data.name.title()}</div>
+                </div>
+              </div>
+
+              <div className={styles.categoriesItem}>
+                <div className={styles.categoriesItemContent}>
+                  <div className={styles.img}>
+                    <img src={data.image.avatar()} />
+                  </div>
+                  <div className={styles.content}>{data.name.title()}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Main>
     </>
-  )
+  );
 }

@@ -1,0 +1,27 @@
+@import '_vars.module.scss';
+
+.container{
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer"
+    ;
+    grid-template-columns: 1fr;
+    grid-template-rows: 11rem 1fr 5rem;
+    height: 100%;
+    direction: rtl;
+  }
+  .header{
+    grid-area: header;
+    background: $main-color;
+  }
+  .main{
+    grid-area: main;
+    height: 100vh;
+  }
+  
+  .footer{
+    grid-area: footer;
+    background: $main-color;
+  }
