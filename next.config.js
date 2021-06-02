@@ -9,4 +9,5 @@ module.exports = {
     defaultLocale: 'ar',
     localeDetection: false,
   },
+  target: 'serverless',
 }

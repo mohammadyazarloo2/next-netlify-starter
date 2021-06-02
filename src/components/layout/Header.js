@@ -128,10 +128,10 @@ class Header extends React.Component {
             <div className={styles.right}>
               <div className={styles.rightMenuOne}>
                 <ul>
-                  <Link href="">
+                  <Link href="/">
                     <li>صفحه اصلی</li>
                   </Link>
-                  <Link href="">
+                  <Link href="/">
                     <li>تماس با ما</li>
                   </Link>
                   <li> عضویت</li>
