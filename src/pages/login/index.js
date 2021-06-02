@@ -1,8 +1,5 @@
 import React from "react";
 import Head from 'next/head'
-import Image from 'next/image'
-import Header from '../../components/layout/Header'
-import styles from './login.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Main from "../../components/Main";
 
