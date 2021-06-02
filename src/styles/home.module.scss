@@ -1,0 +1,96 @@
+@import './vars.module.scss';
+
+.homeContainer{
+    padding: 20px;
+    .homePage{
+        width: 100%;
+        .categories{
+            width: 100%;
+            height: auto;
+            background: url(https://ahanonline.com/wp-content/uploads/2018/11/tir-ahan-esfahan-ahanonlineahanonline-mi.jpeg);
+            background-attachment: fixed;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            display: flex;
+            padding: 20px;
+            margin: auto;
+            .categoriesItem{
+                box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+                width: 15%;
+                height: 190px;
+                padding: 20px;
+                backdrop-filter: blur(5px);
+                margin: auto;
+                .categoriesItemContent{
+                    margin: auto;
+                    text-align: center;
+                    .img{
+                        width: 100%;
+                        height: 100px;
+                        text-align: center;
+                        img{
+                            width: 50%;
+                            height: 100%;
+                        }
+                    }
+                    .content{
+                        padding-top: 15px;
+                        color: $text-white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.radioSection {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input {
+      display: none;
+    }
+    .label2 {
+      margin: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20em;
+      height: 46px;
+      width: 48%;
+      background: #f3f3f3;
+      top: 0px;
+      color: #ce0f3d;
+      font-weight: 800;
+      transition: 0.6;
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .label1 {
+      margin: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 46px;
+      border-radius: 20em;
+      width: 48%;
+      background: #f3f3f3;
+      top: 0px;
+      color: #ce0f3d;
+      font-weight: 800;
+      transition: 0.6;
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .label2 {
+      right: 0px;
+    }
+  }
