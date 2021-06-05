@@ -6,6 +6,10 @@
   url('./iran/ttf/IRANSansWeb.ttf') format('truetype');
 }
 
+.bar-of-progress {
+  z-index: 50;
+}
+
 html,
 body {
   padding: 0;

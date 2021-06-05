@@ -14,8 +14,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import ClockerTima from "../elements/datetime/ClockerTima";
 import Marquee from "react-fast-marquee";
-import { Modal } from "antd";
-import "antd/dist/antd.css";
 import { Formik } from "formik";
 import Input from "../elements/layout/Input";
 
@@ -146,8 +144,8 @@ class Header extends React.Component {
                   <input type="text" className={styles.searchInput} />
                 </div>
                 <ul>
-                  <Link href="/login"><button> عضویت</button></Link>
-                  <li> ورود</li>
+                  <Link href="/register"><button> عضویت</button></Link>
+                  <Link href="/login"><li> ورود</li></Link>
                 </ul>
               </div>
             </div>
@@ -168,67 +166,7 @@ class Header extends React.Component {
             </div>
           </div>
         </div>
-        <Modal
-          title="Title"
-          headStyle={{ backgroundColor: "red" }}
-          visible={this.state.visible}
-          footer={null}
-          onOk={this.handleRegisterOk}
-          confirmLoading={this.state.confirmLoading}
-          onCancel={this.handleRegisterCancel}
-        >
-          <div className={styles.radioSection}>
-            <input
-              type="radio"
-              name="pick"
-              value="1"
-              id="radio1"
-              onChange={this.handleChange}
-              defaultChecked
-            />
-            <label htmlFor="radio1" className={styles.label1}>
-              <span>company</span>
-            </label>
-            <input
-              type="radio"
-              name="pick"
-              value="2"
-              id="radio2"
-              onChange={this.handleChange}
-            />
-            <label htmlFor="radio2" className={styles.label2}>
-              <span>employee</span>
-            </label>
-          </div>
-
-          <Formik
-            initialValues={{ email: "", password: "" }}
-            onSubmit={(values) => this.handleSubmit(values)}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-            }) => (
-              <form onSubmit={handleSubmit} className="reform">
-                
-
-                <label className="reform--label">username</label>
-                <Input type="text" name="username" placeholder="Password" />
-
-                <label className="reform--label">email</label>
-                <Input variant="fill" size="lg" type="text" name="email" placeholder="Email Adress" />
-
-                <label className="reform--label">password</label>
-                <Input type="password" icon iconPosition="left" name="password" placeholder="Password" />
-
-              </form>
-            )}
-          </Formik>
-        </Modal>
+        
       </>
     );
   }

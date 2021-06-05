@@ -8,9 +8,10 @@
     "footer"
     ;
     grid-template-columns: 1fr;
-    grid-template-rows: 11rem 1fr 5rem;
+    grid-template-rows: 12rem 1fr 10rem;
     height: 100%;
     direction: rtl;
+    background: whitesmoke;
   }
   .header{
     grid-area: header;
@@ -18,10 +19,12 @@
   }
   .main{
     grid-area: main;
-    height: 100vh;
+    padding-bottom: 100px;
   }
   
   .footer{
     grid-area: footer;
-    background: $main-color;
+    margin: 10px;
+    border-top: 1px solid #ccc;
+    background: whitesmoke;
   }

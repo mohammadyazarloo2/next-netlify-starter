@@ -7,22 +7,25 @@
         .categories{
             width: 100%;
             height: auto;
-            background: url(https://ahanonline.com/wp-content/uploads/2018/11/tir-ahan-esfahan-ahanonlineahanonline-mi.jpeg);
+            background: rgba(53, 51, 53, 0.2);
             background-attachment: fixed;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             display: flex;
             padding: 20px;
             margin: auto;
+            border-bottom: 1px solid #ccc;
             .categoriesItem{
                 box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
                 width: 15%;
-                height: 190px;
+                height: 200px;
                 padding: 20px;
                 backdrop-filter: blur(5px);
+                background: #cd995d;
                 margin: auto;
                 .categoriesItemContent{
                     margin: auto;
                     text-align: center;
+                    
                     .img{
                         width: 100%;
                         height: 100px;
@@ -39,58 +42,200 @@
                 }
             }
         }
+
+        .mainerStream{
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+          border-top: 1px solid #ccc;
+          flex-wrap: wrap;
+
+          &Main{
+            width: 80%;
+            &Shop{
+              width: 100%;
+
+              &Info{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                &Left{
+                  border: 2px solid #ccc;
+                  padding: 5px;
+                  background: #334880;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  h3{
+                    margin: 0px !important;
+                    color: #fff;
+                  }
+                }
+              }
+              
+
+              .shop{
+                width: 100%;
+                height: 200px;
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                column-gap: 15px;
+                &Item{
+                  border: 1px solid #ccc;
+                  width: 100%;
+                  height: 100%;
+                  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                }
+                
+              }
+              
+
+            }
+
+            .notif{
+              padding-top: 15px;
+              &Body{
+                border: 1px solid #ccc;
+                width: 100%;
+                height: 200px;
+                &Head{
+                  display: grid;
+                  grid-template-columns: repeat(3,1fr);
+                  border-bottom: 1px solid #ccc;
+                  background: #0e87b5;
+                  h3{
+                    text-align: center;
+                    color: #fff;
+                  }
+                }
+                &Items{
+                  display: grid;
+                  grid-template-columns: repeat(3,1fr);
+                  h3{
+                    text-align: center;
+                  }
+                }
+
+              }
+            }
+
+            .support{
+              padding-top: 30px;
+              display: grid;
+              grid-template-columns: repeat(3,1fr);
+              column-gap: 20px;
+              height: 150px;
+              &Item{
+                width: 100%;
+                border: 1px solid #ccc;
+                border-radius: 7px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+
+            .advertise{
+              margin-top: 40px;
+              width: 100%;
+              height: 230px;
+              border: 1px solid #ccc;
+              box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+              border-radius: 5px;
+              img{
+                border-radius: 5px;
+                width: 100%;
+                height: 100%;
+              }
+            }
+
+          }
+          .guideSite{
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            column-gap: 10px;
+            row-gap: 10px;
+            &Item{
+              width: 100%;
+              height: 150px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              h2{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+          }
+
+          &Side{
+            width: 20%;
+            ul{
+              li{
+                list-style: square;
+                padding-top: 10px;
+                padding-bottom: 10px;
+              }
+            }
+          }
+          
+        }
+
+
     }
 }
 
 
-.radioSection {
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    input {
-      display: none;
-    }
-    .label2 {
-      margin: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 20em;
-      height: 46px;
-      width: 48%;
-      background: #f3f3f3;
-      top: 0px;
-      color: #ce0f3d;
-      font-weight: 800;
-      transition: 0.6;
-      span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-    .label1 {
-      margin: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 46px;
-      border-radius: 20em;
-      width: 48%;
-      background: #f3f3f3;
-      top: 0px;
-      color: #ce0f3d;
-      font-weight: 800;
-      transition: 0.6;
-      span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-    .label2 {
-      right: 0px;
-    }
-  }
+// .radioSection {
+//     width: 100%;
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     input {
+//       display: none;
+//     }
+//     .label2 {
+//       margin: 10px;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       border-radius: 20em;
+//       height: 46px;
+//       width: 48%;
+//       background: #f3f3f3;
+//       top: 0px;
+//       color: #ce0f3d;
+//       font-weight: 800;
+//       transition: 0.6;
+//       span {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//       }
+//     }
+//     .label1 {
+//       margin: 10px;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       height: 46px;
+//       border-radius: 20em;
+//       width: 48%;
+//       background: #f3f3f3;
+//       top: 0px;
+//       color: #ce0f3d;
+//       font-weight: 800;
+//       transition: 0.6;
+//       span {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//       }
+//     }
+//     .label2 {
+//       right: 0px;
+//     }
+//   }

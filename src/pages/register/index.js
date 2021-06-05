@@ -32,7 +32,7 @@ class Login extends React.Component {
     return (
       <>
         <Head>
-          <title>صفحه ورود به سایت</title>
+          <title>صفحه عضویت در سایت</title>
         </Head>
         <Main>
           <div className={styles.loginPage}>
@@ -41,7 +41,7 @@ class Login extends React.Component {
                 <div className={styles.loginPageHeadIcon}>
                   <FontAwesomeIcon icon={faUser} />
                 </div>
-                <h2> به صفحه ورود جوان ابزار خوش امدید </h2>
+                <h2> به صفحه عضویت جوان ابزار خوش امدید </h2>
               </div>
 
               <Formik
@@ -103,14 +103,10 @@ class Login extends React.Component {
                       <div>{errors.password}</div>
                     )}
 
-                    <b style={{ color: "#f4bd11" }}>
-                      کلمه عبور را فراموش کرده ام
-                    </b>
-
                     <Button
                       background="#0e87b5"
                       color="#fff"
-                      text="ورود به سایت"
+                      text="عضویت در سایت"
                       rounded
                     />
 
@@ -118,11 +114,11 @@ class Login extends React.Component {
                       آیا شما در سایت عضو شده اید ؟
                     </b>
 
-                    <Link href="/register">
+                    <Link href="/login">
                       <Button
                         background="rgb(223, 5, 108)"
                         color="#fff"
-                        text="عضویت در سایت"
+                        text="ورود به سایت"
                         rounded
                       />
                     </Link>

@@ -14,8 +14,10 @@
     text-align: right;
     color: $dark-main-color;
     background-color: $gray !important;
+    margin-top: 6px;
+    margin-bottom: 5px;
     &::placeholder {
-      text-align: center;
+      text-align: right;
     }
     &.sm {
       padding: 1em - 0.45em 1em;
