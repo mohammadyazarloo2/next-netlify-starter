@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Link from 'next/link'
+import Link from "next/link";
 import styles from "../../styles/login.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Main from "../../components/Main";
@@ -8,6 +8,7 @@ import { Formik } from "formik";
 import Input from "../../components/elements/layout/Input";
 import Button from "../../components/elements/layout/Button";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { Zoom, Grid, Paper, Typography } from "@material-ui/core";
 
 class Login extends React.Component {
   validateEmail(value) {
@@ -35,98 +36,128 @@ class Login extends React.Component {
           <title>صفحه عضویت در سایت</title>
         </Head>
         <Main>
-          <div className={styles.loginPage}>
-            <div className={styles.loginPageBody}>
-              <div className={styles.loginPageHead}>
-                <div className={styles.loginPageHeadIcon}>
-                  <FontAwesomeIcon icon={faUser} />
-                </div>
-                <h2> به صفحه عضویت جوان ابزار خوش امدید </h2>
-              </div>
+          <Grid container style={{ marginTop: "30px" }}>
+            <Zoom in={true} style={{ transitionDelay: "500ms" }}>
+              <Grid xs={10} style={{ margin: "auto" }}>
+                <Paper style={{ padding: "20px" }}>
+                  <Grid container>
+                    <Grid item xs={4} style={{padding:'15px',textAlign:'center'}}>
+                      <div className={styles.loginPageHeadIcon}>
+                        <FontAwesomeIcon icon={faUser} />
+                      </div>
+                      <Typography variant="h6">
+                        عضویت در سایت
+                      </Typography>
+                      <Typography variant="span">
+                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                        چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون
+                        بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و
+                        برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با
+                        هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت
+                        و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
+                        متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را
+                        برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ
+                      </Typography>
+                    </Grid>
 
-              <Formik
-                initialValues={{ username: "", email: "", password: "" }}
-                onSubmit={async (values) => {
-                  await new Promise((resolve) => setTimeout(resolve, 500));
-                  alert(JSON.stringify(values, null, 2));
-                }}
-                onSubmit={(values) => this.handleSubmit(values)}
-              >
-                {({
-                  values,
-                  errors,
-                  touched,
-                  handleChange,
-                  handleBlur,
-                  handleSubmit,
-                }) => (
-                  <form onSubmit={handleSubmit} className="reform">
-                    <label className="reform--label">نام کاربری</label>
-                    <Input
-                      type="text"
-                      name="username"
-                      placeholder="نام کاربری"
-                      value={values.username}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {errors.username && touched.username && (
-                      <div>{errors.username}</div>
-                    )}
+                    <Grid item xs={8}>
+                      <Formik
+                        initialValues={{
+                          username: "",
+                          email: "",
+                          password: "",
+                        }}
+                        onSubmit={async (values) => {
+                          await new Promise((resolve) =>
+                            setTimeout(resolve, 500)
+                          );
+                          alert(JSON.stringify(values, null, 2));
+                        }}
+                        onSubmit={(values) => this.handleSubmit(values)}
+                      >
+                        {({
+                          values,
+                          errors,
+                          touched,
+                          handleChange,
+                          handleBlur,
+                          handleSubmit,
+                        }) => (
+                          <form onSubmit={handleSubmit} className="reform">
+                            <label className="reform--label">نام کاربری</label>
+                            <Input
+                              type="text"
+                              name="username"
+                              placeholder="نام کاربری"
+                              value={values.username}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {errors.username && touched.username && (
+                              <div>{errors.username}</div>
+                            )}
 
-                    <label className="reform--label">پست الکترونیک</label>
-                    <Input
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      name="email"
-                      variant="fill"
-                      size="lg"
-                      type="text"
-                      name="email"
-                      placeholder="پشت الکترونیک"
-                    />
-                    {errors.email && touched.email && <div>{errors.email}</div>}
+                            <label className="reform--label">
+                              پست الکترونیک
+                            </label>
+                            <Input
+                              value={values.email}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              name="email"
+                              variant="fill"
+                              size="lg"
+                              type="text"
+                              name="email"
+                              placeholder="پشت الکترونیک"
+                            />
+                            {errors.email && touched.email && (
+                              <div>{errors.email}</div>
+                            )}
 
-                    <label className="reform--label">کلمه عبور</label>
-                    <Input
-                      name="password"
-                      type="password"
-                      icon
-                      iconPosition="left"
-                      placeholder="کلمه عبور"
-                      value={values.password}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {errors.password && touched.password && (
-                      <div>{errors.password}</div>
-                    )}
+                            <label className="reform--label">کلمه عبور</label>
+                            <Input
+                              name="password"
+                              type="password"
+                              icon
+                              iconPosition="left"
+                              placeholder="کلمه عبور"
+                              value={values.password}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {errors.password && touched.password && (
+                              <div>{errors.password}</div>
+                            )}
 
-                    <Button
-                      background="#0e87b5"
-                      color="#fff"
-                      text="عضویت در سایت"
-                      rounded
-                    />
+                            <Button
+                              background="#0e87b5"
+                              color="#fff"
+                              text="عضویت در سایت"
+                              rounded
+                            />
 
-                    <b style={{ color: "#f4bd11" }}>
-                      آیا شما در سایت عضو شده اید ؟
-                    </b>
+                            <b style={{ color: "#f4bd11" }}>
+                              آیا شما در سایت عضو شده اید ؟
+                            </b>
 
-                    <Link href="/login">
-                      <Button
-                        background="rgb(223, 5, 108)"
-                        color="#fff"
-                        text="ورود به سایت"
-                        rounded
-                      />
-                    </Link>
-                  </form>
-                )}
-              </Formik>
-            </div>
-          </div>
+                            <Link href="/login">
+                              <Button
+                                background="rgb(223, 5, 108)"
+                                color="#fff"
+                                text="ورود به سایت"
+                                rounded
+                              />
+                            </Link>
+                          </form>
+                        )}
+                      </Formik>
+                    </Grid>
+                  </Grid>
+                </Paper>
+              </Grid>
+            </Zoom>
+          </Grid>
         </Main>
       </>
     );

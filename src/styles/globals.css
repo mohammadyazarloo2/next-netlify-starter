@@ -14,7 +14,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: javan;
+  font-family: javan !important;
   font-size: 95%;
   height: 100vh;
   box-sizing: content-box;

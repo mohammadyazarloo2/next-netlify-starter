@@ -3,13 +3,11 @@
 .mainHead {
   height: 100%;
   .top {
-    background: inherit;
     width: 100%;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $dark-main-color;
     .middle {
       background: transparent;
       color: white;
@@ -125,10 +123,15 @@
           }
         }
         ul {
+          margin-left: 15px;
+          button{
+            color: #fff;
+          }
           li {
             display: inline-block;
             color: $text-white;
             padding-left: 40px;
+            color:#fff;
           }
         }
       }

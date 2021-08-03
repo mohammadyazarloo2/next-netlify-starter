@@ -22,7 +22,7 @@ class ClockerTima extends React.Component {
   render() {
     return (
       <>
-          <h3 dir="ltr">{this.state.date.toLocaleTimeString()} </h3>
+          <b dir="ltr">{this.state.date.toLocaleTimeString()} </b>
       </>
     );
   }
