@@ -1,15 +1,26 @@
 const initstate={
-    contact:[
-        {id:'1',title:'hello me',content:'how can i join?'},
-        {id:'2',title:'work',content:'how dose it work?'},
-        {id:'3',title:'resume',content:'we didnt send it'},
-    ]
+    isLogged:false
 }
 
 const logReducer=(state=initstate,action)=>{
     switch (action.type){
-        case 'LOGGED':
-            return state;
+        case 'LOGIN_ERROR':
+            return {
+                ...state,
+                authError:'Login Failed'
+            }
+        case 'LOGIN_SUCCESS':
+            console.log(state)
+            return {
+                ...state,
+                authError:'success',
+                isLogged:true,
+            };
+        case 'CHECK_LOGIN':
+            return{
+                ...state,
+            }
+            
         default:
             return state
     }

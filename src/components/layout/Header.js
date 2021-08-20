@@ -25,10 +25,11 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { Paper, Grid, Zoom, TextField } from "@material-ui/core";
+import { Paper, Grid, Zoom, TextField, Box } from "@material-ui/core";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
-import { green } from "@material-ui/core/colors";
+import { blue, green, yellow } from "@material-ui/core/colors";
+import { connect } from "react-redux";
 
 class Header extends React.Component {
   constructor(props) {
@@ -112,6 +113,11 @@ class Header extends React.Component {
   };
 
   render() {
+    let totalCount=0
+    this.props.basket.basket_items.forEach(basket_item=>{
+      totalCount+=basket_item.count
+    })
+
     return (
       <>
         <div className={styles.mainHead}>
@@ -124,14 +130,28 @@ class Header extends React.Component {
                 <Typography variant="h6" align="center" style={{ flexGrow: 1 }}>
                   <ClockerTima />
                 </Typography>
-                <Link href="/users">
-                  <Button color="default">پروفایل</Button>
-                </Link>
+
+                <ul>
+                  {this.props.isLogged === false ? (
+                    <div>
+                      <Link href="/register">
+                        <Button color="default"> عضویت</Button>
+                      </Link>
+                      <Link href="/login">
+                        <Button color="default"> ورود</Button>
+                      </Link>
+                    </div>
+                  ) : (
+                    <Link href="/users">
+                      <Button color="default">پروفایل</Button>
+                    </Link>
+                  )}
+                </ul>
               </Toolbar>
             </AppBar>
           </div>
 
-          <div className={styles.middle} style={{background:'#c8e6c9'}}>
+          <div className={styles.middle} style={{ background: "#c8e6c9" }}>
             <div className={styles.logo}>
               <img src="./logo.png" />
             </div>
@@ -159,31 +179,58 @@ class Header extends React.Component {
                   </label>
                   <input type="text" className={styles.searchInput} />
                 </div>
-                <ul>
-                  <Link href="/register">
-                    <Button color="default"> عضویت</Button>
-                  </Link>
-                  <Link href="/login">
-                    <Button color="default"> ورود</Button>
-                  </Link>
-                </ul>
               </div>
             </div>
 
-            <div className={styles.access}>
-              <div className={styles.basketSection}>
-                <button className={styles.basket} onClick={this.handleOpen}>
-                  سبد خرید
-                  <FontAwesomeIcon icon={faShoppingBasket} />
-                </button>
-              </div>
-              <div className={styles.favoriteSesion}>
-                <button className={styles.favorite}>
-                  علاقه مندی ها
-                  <FontAwesomeIcon icon={faHeart} />
-                </button>
-              </div>
-            </div>
+            <Grid item xs={3}>
+              <Grid container>
+                <Grid item xs={6}>
+                  <Link href="basket">
+                    <Button
+                      variant="contained"
+                      style={{ background: green[400], color: "#fff" }}
+                    >
+                      سبد خرید
+                      <FontAwesomeIcon icon={faShoppingBasket} />
+                      {totalCount > 0 ? (
+                        <span
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            background: "red",
+                            borderRadius: "50px",
+                            marginRight: "5px",
+                          }}
+                        >
+                          {totalCount}
+                        </span>
+                      ) : (
+                        <span
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            background: "red",
+                            borderRadius: "50px",
+                            marginRight: "5px",
+                          }}
+                        >
+                          0
+                        </span>
+                      )}
+                    </Button>
+                  </Link>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button
+                    variant="contained"
+                    style={{ background: yellow[400], color: "#fff" }}
+                  >
+                    علاقه مندی
+                    <FontAwesomeIcon icon={faHeart} />
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
           </div>
         </div>
 
@@ -222,7 +269,9 @@ class Header extends React.Component {
                         تیر اهنن 18
                       </Grid>
                       <Grid item xs={8} align="left">
-                        <span style={{ color: green[500] }}>قیمت: 12,200 تومان </span>
+                        <span style={{ color: green[500] }}>
+                          قیمت: 12,200 تومان{" "}
+                        </span>
                         <Button>
                           <RemoveIcon color="secondary" />
                         </Button>
@@ -247,4 +296,12 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    isLogged: state.logged.isLogged,
+    basket: state.basket,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

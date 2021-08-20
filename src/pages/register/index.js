@@ -6,9 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Main from "../../components/Main";
 import { Formik } from "formik";
 import Input from "../../components/elements/layout/Input";
-import Button from "../../components/elements/layout/Button";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { Zoom, Grid, Paper, Typography } from "@material-ui/core";
+import { Zoom, Grid, Paper, Typography, Button } from "@material-ui/core";
+import { blue, green, red } from "@material-ui/core/colors";
+
 
 class Login extends React.Component {
   validateEmail(value) {
@@ -41,13 +42,15 @@ class Login extends React.Component {
               <Grid xs={10} style={{ margin: "auto" }}>
                 <Paper style={{ padding: "20px" }}>
                   <Grid container>
-                    <Grid item xs={4} style={{padding:'15px',textAlign:'center'}}>
+                    <Grid
+                      item
+                      xs={4}
+                      style={{ padding: "15px", textAlign: "center" }}
+                    >
                       <div className={styles.loginPageHeadIcon}>
                         <FontAwesomeIcon icon={faUser} />
                       </div>
-                      <Typography variant="h6">
-                        عضویت در سایت
-                      </Typography>
+                      <Typography variant="h6">عضویت در سایت</Typography>
                       <Typography variant="span">
                         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
                         چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون
@@ -130,25 +133,37 @@ class Login extends React.Component {
                               <div>{errors.password}</div>
                             )}
 
-                            <Button
-                              background="#0e87b5"
-                              color="#fff"
-                              text="عضویت در سایت"
-                              rounded
-                            />
-
-                            <b style={{ color: "#f4bd11" }}>
-                              آیا شما در سایت عضو شده اید ؟
-                            </b>
-
-                            <Link href="/login">
+                            <Grid item xs={12} style={{ marginTop: "15px" }}>
                               <Button
-                                background="rgb(223, 5, 108)"
-                                color="#fff"
-                                text="ورود به سایت"
-                                rounded
-                              />
-                            </Link>
+                                onClick={this.register}
+                                style={{
+                                  background: green[500],
+                                  color: "white",
+                                  borderRadius: "50px",
+                                }}
+                                variant="container"
+                              >
+                                ورود به سایت
+                              </Button>
+                            </Grid>
+                            <Grid item xs={12} style={{ marginTop: "20px" }}>
+                              <b style={{ color: "#f4bd11" }}>
+                                آیا شما در سایت عضو نشده اید ؟
+                              </b>
+                              <Link href="/register">
+                                <Button
+                                  onClick={this.login}
+                                  variant="container"
+                                  style={{
+                                    background: red[400],
+                                    borderRadius: "50px",
+                                    color: "#fff",
+                                  }}
+                                >
+                                  عضویت در سایت
+                                </Button>
+                              </Link>
+                            </Grid>
                           </form>
                         )}
                       </Formik>

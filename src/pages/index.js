@@ -42,6 +42,8 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import axios from "axios";
+import Product from "../components/product";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -105,6 +107,7 @@ class Home extends React.Component {
     super(props);
     this.state = {
       open: false,
+      datas:[],
     };
   }
 
@@ -114,9 +117,20 @@ class Home extends React.Component {
     });
   };
 
+  fetchdata=async()=>{
+    let result=await axios.get('https://workplace.nextsignalz.com/Products/Get')
+    this.setState({
+        datas:result.data,
+    })
+  }
+  
+  componentDidMount(){
+    this.fetchdata()
+  }
+
   render() {
     const { contact } = this.props;
-
+    
     return (
       <>
         <Head>
@@ -125,14 +139,16 @@ class Home extends React.Component {
 
         <Main>
           <Grid container>
-            <Grid item xs={12} style={{ margin: "15px" }}>
+            <Grid item lg={12} xs={12} md={12} style={{ margin: "15px" }}>
               <Paper style={{ padding: "20px" }}>
                 <Grid container>
                   {mainCat.map((item, i) => (
                     <Grid
                       item
-                      xs={3}
-                      style={{ paddingLeft: "10px", paddingRight: "10px" }}
+                      lg={3}
+                      xs={6}
+                      md={6}
+                      style={{ paddingLeft: "10px", paddingRight: "10px",marginBottom:'15px' }}
                     >
                       <Link href="[category]" as={`${item.url}`}>
                         <Paper style={{ background: blue[400] }}>
@@ -222,97 +238,18 @@ class Home extends React.Component {
                             </Typography>
                           </Grid>
                         </Grid>
-
                         <Grid container>
-                          {contact.map((item) => (
-                            <Link
-                              href={`details/` + item.message}
-                            >
-                              <Grid
-                                style={{
-                                  paddingLeft: "5px",
-                                  paddingRight: "5px",
-                                }}
-                                item
-                                xs={3}
-                              >
-                                <Paper>
-                                  <div>
-                                    <img
-                                      style={{ width: "100%", height: "100%" }}
-                                      src="./1.png"
-                                    />
-                                  </div>
-                                  <div>
-                                    <Typography
-                                      variant="h6"
-                                      style={{ padding: "10px" }}
-                                    >
-                                      {item.message}
-                                    </Typography>
-                                  </div>
-                                  <Paper
-                                    style={{
-                                      boxShadow:
-                                        "rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset",
-                                      padding: "10px",
-                                    }}
-                                  >
-                                    <Grid container>
-                                      <Grid item xs={7}>
-                                        <Typography variant="span">
-                                          1,200 تومان
-                                        </Typography>
-                                        <Typography variant="span">
-                                          {" "}
-                                          400 تومان{" "}
-                                        </Typography>
-                                      </Grid>
-                                      <Grid item xs={5} align="left">
-                                        <Tooltip
-                                          TransitionComponent={Zoom}
-                                          title="افزودن به سبد خرید"
-                                          placement="top"
-                                        >
-                                          <IconButton size="small">
-                                            <FavoriteBorderOutlined />
-                                          </IconButton>
-                                        </Tooltip>
-
-                                        <Tooltip
-                                          TransitionComponent={Zoom}
-                                          title="افزودن به علاقه مندی"
-                                          placement="top"
-                                        >
-                                          <IconButton size="small">
-                                            <ShoppingBasket
-                                              style={{ color: green[500] }}
-                                            />
-                                          </IconButton>
-                                        </Tooltip>
-                                        <Tooltip
-                                          TransitionComponent={Zoom}
-                                          title="بازدید ها"
-                                          placement="top"
-                                        >
-                                          <IconButton size="small">
-                                            <RemoveRedEyeOutlined color="disabled" />
-                                          </IconButton>
-                                        </Tooltip>
-                                      </Grid>
-                                    </Grid>
-                                  </Paper>
-                                </Paper>
-                              </Grid>
-                            </Link>
-                          ))}
+                         {this.props.product.map((item) => (
+                        <Product id={item.id} hasOff={item.hasOff} name={item.name} price={item.price} offValue={item.offValue} />
+                        ))}
                         </Grid>
+
                       </Paper>
                     </Grid>
                   </Grid>
 
                   <Grid container>
-                    <Grid item xs={12} style={{ marginTop: "15px" }}>
+                    <Grid item xs={12} style={{ marginTop: "15px",height:'200px' }}>
                       <Paper style={{ padding: "20px" }}>
                         <Typography variant="h5">
                           {" "}
@@ -520,14 +457,10 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
+const mapStateToProps=(state)=>{
   return {
-    contact: state.firestore.ordered.contact,
-  };
-};
+    product:state.product
+  }
+}
 
-export default compose(
-  connect(mapStateToProps),
-  firestoreConnect([{ collection: "contact" }])
-)(Home);
+export default connect(mapStateToProps)(Home);
