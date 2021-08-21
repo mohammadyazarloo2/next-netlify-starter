@@ -24,6 +24,7 @@ import {
   Inbox,
   ShoppingBasket,
   ShoppingBasketRounded,
+  VerifiedUserRounded,
 } from "@material-ui/icons";
 import ReceiptIcon from "@material-ui/icons/Receipt";
 import { spacing } from "@material-ui/system";
@@ -72,26 +73,33 @@ class Users extends React.Component {
                         </ListSubheader>
                       }
                     >
-                      <ListItem>
+                      <ListItem button>
+                        <ListItemIcon>
+                          <VerifiedUserRounded />
+                        </ListItemIcon>
+                        <ListItemText align="right" primary="ویرایش پروفایل" />
+                        <ExpandLess />
+                      </ListItem>
+                      <ListItem button>
                         <ListItemIcon>
                           <ShoppingBasket />
                         </ListItemIcon>
                         <ListItemText align="right" primary="سابقه خرید" />
                       </ListItem>
-                      <ListItem>
+                      <ListItem button>
                         <ListItemIcon>
                           <Favorite />
                         </ListItemIcon>
                         <ListItemText align="right" primary="علاقه مندی ها" />
                       </ListItem>
-                      <ListItem>
+                      <ListItem button>
                         <ListItemIcon>
                           <ReceiptIcon />
                         </ListItemIcon>
                         <ListItemText align="right" primary="پیش فاکتور جدید" />
                         <ExpandLess />
                       </ListItem>
-                      <ListItem>
+                      <ListItem button>
                         <ListItemIcon>
                           <ShoppingBasketRounded />
                         </ListItemIcon>

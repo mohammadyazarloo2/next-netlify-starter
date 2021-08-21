@@ -23,7 +23,7 @@ import {
   ShoppingBasket,
 } from "@material-ui/icons";
 import { connect } from "react-redux";
-import { addToProduct } from "../../store/actions";
+import { addToProduct,incrementProductBasket } from "../../store/actions";
 
 class Product extends React.Component {
   constructor(props) {
@@ -46,7 +46,9 @@ class Product extends React.Component {
       let index=this.props.basket.basket_items.findIndex(element=>product.id===element.id)
       if(index<0){
           this.props.addToProduct(product)
-      }else{}
+      }else{
+        this.props.incrementProductBasket(index)
+      }
   }
 
   render() {
@@ -135,4 +137,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps,{
     addToProduct,
+    incrementProductBasket
 })(Product);

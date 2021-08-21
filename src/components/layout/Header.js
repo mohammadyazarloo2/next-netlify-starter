@@ -117,6 +117,7 @@ class Header extends React.Component {
     this.props.basket.basket_items.forEach(basket_item=>{
       totalCount+=basket_item.count
     })
+    console.log(this.props)
 
     return (
       <>
@@ -132,7 +133,7 @@ class Header extends React.Component {
                 </Typography>
 
                 <ul>
-                  {this.props.isLogged === false ? (
+                  {this.props.logged.isLogged === false ? (
                     <div>
                       <Link href="/register">
                         <Button color="default"> عضویت</Button>
@@ -143,7 +144,7 @@ class Header extends React.Component {
                     </div>
                   ) : (
                     <Link href="/users">
-                      <Button color="default">پروفایل</Button>
+                      <Button color="default"> پروفایل </Button>
                     </Link>
                   )}
                 </ul>
@@ -192,7 +193,7 @@ class Header extends React.Component {
                     >
                       سبد خرید
                       <FontAwesomeIcon icon={faShoppingBasket} />
-                      {totalCount > 0 ? (
+                      {this.props.basket.basket_items.length > 0 ? (
                         <span
                           style={{
                             width: "20px",
@@ -202,7 +203,7 @@ class Header extends React.Component {
                             marginRight: "5px",
                           }}
                         >
-                          {totalCount}
+                          {this.props.basket.basket_items.length}
                         </span>
                       ) : (
                         <span
@@ -297,9 +298,8 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
-    isLogged: state.logged.isLogged,
+    logged: state.logged,
     basket: state.basket,
   };
 };

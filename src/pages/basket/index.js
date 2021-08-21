@@ -13,6 +13,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import StickyBox from "react-sticky-box";
+import { connect } from "react-redux";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -55,6 +56,11 @@ class Basket extends React.Component {
   }
 
   render() {
+    let totalPrice=0
+    this.props.basket.basket_items.forEach(basket_item=>{
+      totalPrice+=basket_item.price*basket_item.count
+    })
+    console.log(this.props)
     return (
       <>
         <Head>
@@ -95,17 +101,17 @@ class Basket extends React.Component {
                               </StyledTableCell>
                             </TableHead>
                             <TableBody>
-                              {rows.map((row) => (
-                                <StyledTableRow key={row.name}>
+                              {this.props.basket.basket_items.map((row,index) => (
+                                <StyledTableRow key={row.id}>
                                   <StyledTableCell
                                     component="th"
                                     scope="row"
                                     align="center"
                                   >
-                                    {row.number}
+                                    {index}
                                   </StyledTableCell>
                                   <StyledTableCell align="center">
-                                    {row.desc}
+                                    {row.name}
                                   </StyledTableCell>
                                   <StyledTableCell align="center">
                                     {row.count}
@@ -114,13 +120,13 @@ class Basket extends React.Component {
                                     {row.vahed}
                                   </StyledTableCell>
                                   <StyledTableCell align="center">
-                                    {row.nerkh}
-                                  </StyledTableCell>
-                                  <StyledTableCell align="center">
-                                    {row.off}
-                                  </StyledTableCell>
-                                  <StyledTableCell align="center">
                                     {row.price}
+                                  </StyledTableCell>
+                                  <StyledTableCell align="center">
+                                    {row.offValue}
+                                  </StyledTableCell>
+                                  <StyledTableCell align="center">
+                                    {row.price*row.count}
                                   </StyledTableCell>
                                 </StyledTableRow>
                               ))}
@@ -162,7 +168,9 @@ class Basket extends React.Component {
                   </Grid>
                   <Grid item lg={6} xs={12} md={12}>
                     <Grid container>
-                      <Grid xs={12} style={{ marginBottom: "20px",height:'200px' }}>
+                    {this.props.basket.basket_items.map((items) => (
+
+                        <Grid xs={12} style={{ marginBottom: "20px",height:'200px' }}>
                         <Paper style={{ height:'100%' }}>
                           <Grid container style={{ height:'100%' }}>
                             <Grid item xs={4} style={{ height:'100%' }}>
@@ -175,8 +183,7 @@ class Basket extends React.Component {
                               <Grid container>
                                 <Grid item xs={12}>
                                   <Typography variant="h6">
-                                    {" "}
-                                    آهن 14 اصفهان{" "}
+                                    {items.name}
                                   </Typography>
                                 </Grid>
                                 <Grid
@@ -187,14 +194,12 @@ class Basket extends React.Component {
                                   <Grid container>
                                     <Grid item xs={3}>
                                       <Typography variant="span">
-                                        {" "}
                                         قیمت{" "}
                                       </Typography>
                                     </Grid>
                                     <Grid item xs={3}>
                                       <Typography variant="span">
-                                        {" "}
-                                        4,000,000{" "}
+                                        {items.price}
                                       </Typography>
                                     </Grid>
                                     <Grid item xs={3}>
@@ -205,8 +210,7 @@ class Basket extends React.Component {
                                     </Grid>
                                     <Grid item xs={3}>
                                       <Typography variant="span">
-                                        {" "}
-                                        22{" "}
+                                        {items.offValue}
                                       </Typography>
                                     </Grid>
                                   </Grid>
@@ -262,206 +266,9 @@ class Basket extends React.Component {
                           </Grid>
                         </Paper>
                       </Grid>
-                      <Grid xs={12} style={{ marginBottom: "20px",height:'200px' }}>
-                        <Paper style={{ height:'100%' }}>
-                          <Grid container style={{ height:'100%' }}>
-                            <Grid item lg={4} xs={4} md={4} style={{ height:'100%' }}>
-                              <img
-                                style={{ width: "100%", height: "100%" }}
-                                src="/4.jpg"
-                              />
-                            </Grid>
-                            <Grid item xs={8} style={{ padding: "15px" }}>
-                              <Grid container>
-                                <Grid item xs={12}>
-                                  <Typography variant="h6">
-                                    {" "}
-                                    آهن 14 اصفهان{" "}
-                                  </Typography>
-                                </Grid>
-                                <Grid
-                                  item
-                                  xs={12}
-                                  style={{ paddingTop: "20px" }}
-                                >
-                                  <Grid container>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        قیمت{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        4,000,000{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        نرخ ویژه{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        22{" "}
-                                      </Typography>
-                                    </Grid>
-                                  </Grid>
-                                </Grid>
-                                <Grid
-                                  item
-                                  xs={12}
-                                  style={{ paddingTop: "20px" }}
-                                >
-                                  <Grid container>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        واحد{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        4,000,000{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        واحد{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        22{" "}
-                                      </Typography>
-                                    </Grid>
-                                  </Grid>
-                                </Grid>
-                                <Grid
-                                  item
-                                  xs={12}
-                                  align="center"
-                                  style={{ paddingTop: "20px" }}
-                                >
-                                  <Button
-                                    fullWidth
-                                    variant="container"
-                                    color="default"
-                                  >
-                                    اصلاعات کالا
-                                  </Button>
-                                </Grid>
-                              </Grid>
-                            </Grid>
-                          </Grid>
-                        </Paper>
-                      </Grid>
-                      <Grid xs={12} style={{ marginBottom: "20px",height:'200px' }}>
-                        <Paper style={{ height:'100%' }}>
-                          <Grid container style={{ height:'100%' }}>
-                            <Grid item xs={4} style={{ height:'100%' }}>
-                              <img
-                                style={{ width: "100%", height: "100%" }}
-                                src="/1.png"
-                              />
-                            </Grid>
-                            <Grid item xs={8} style={{ padding: "15px" }}>
-                              <Grid container>
-                                <Grid item xs={12}>
-                                  <Typography variant="h6">
-                                    {" "}
-                                    آهن 14 اصفهان{" "}
-                                  </Typography>
-                                </Grid>
-                                <Grid
-                                  item
-                                  xs={12}
-                                  style={{ paddingTop: "20px" }}
-                                >
-                                  <Grid container>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        قیمت{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        4,000,000{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        نرخ ویژه{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        22{" "}
-                                      </Typography>
-                                    </Grid>
-                                  </Grid>
-                                </Grid>
-                                <Grid
-                                  item
-                                  xs={12}
-                                  style={{ paddingTop: "20px" }}
-                                >
-                                  <Grid container>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        واحد{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        4,000,000{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        واحد{" "}
-                                      </Typography>
-                                    </Grid>
-                                    <Grid item xs={3}>
-                                      <Typography variant="span">
-                                        {" "}
-                                        22{" "}
-                                      </Typography>
-                                    </Grid>
-                                  </Grid>
-                                </Grid>
-                                <Grid
-                                  item
-                                  xs={12}
-                                  align="center"
-                                  style={{ paddingTop: "20px" }}
-                                >
-                                  <Button
-                                    fullWidth
-                                    variant="container"
-                                    color="default"
-                                  >
-                                    اصلاعات کالا
-                                  </Button>
-                                </Grid>
-                              </Grid>
-                            </Grid>
-                          </Grid>
-                        </Paper>
-                      </Grid>
+
+                    ))}
+                      
                     </Grid>
                   </Grid>
                 </Grid>
@@ -474,4 +281,11 @@ class Basket extends React.Component {
   }
 }
 
-export default Basket;
+const mapStateToProps = (state) => {
+  return {
+    products: state.product,
+    basket:state.basket,
+  };
+};
+
+export default connect(mapStateToProps)(Basket);

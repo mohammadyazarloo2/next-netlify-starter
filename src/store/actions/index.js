@@ -6,3 +6,12 @@ export const addToProduct= (product)=>{
         }
     }
 }
+
+export const incrementProductBasket=(index)=>{
+    return{
+        type:'INCREMENT_PRODUCT',
+        payload:{
+            index:index,
+        }
+    }
+}

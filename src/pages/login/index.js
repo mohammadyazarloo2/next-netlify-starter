@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import { SignIn } from "../../store/actions/logAction";
 import { Redirect } from "react-router";
 import { blue, green, red } from "@material-ui/core/colors";
+import Cookie from 'js-cookie'
 
 class Login extends React.Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class Login extends React.Component {
   login = async () => {
     const formData = new FormData();
     formData.append("webAPI", "AIzaSyCafDqivw4iWUbzyltNAmpnW36O2h62KaA");
-    formData.append("Email", "redux444444444444444@gmail.com");
+    formData.append("Email", "walk4777777777@gmail.com");
     formData.append("Pass", "kalimode2");
 
     this.props.SignIn(formData);
@@ -51,9 +52,9 @@ class Login extends React.Component {
   };
 
   render() {
-    const { logged } = this.props;
-    if (logged === true) {
-      return <Redirect to="/" />;
+
+    if (this.props.logged.isLogged === true) {
+      return this.props.router.push('/')
     } else {
       return (
         <>

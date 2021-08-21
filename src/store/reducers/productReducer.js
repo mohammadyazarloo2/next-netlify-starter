@@ -16,6 +16,7 @@ let initializeState = [
     offValue: 51,
     image: "/images/products/1.jpg",
     price: 90000,
+    count:1,
   },
   {
     id: 2,
@@ -27,6 +28,7 @@ let initializeState = [
     offValue: 0,
     image: "/images/products/111356841.jpg",
     price: 144000,
+    count:1,
   },
   {
     id: 3,
@@ -38,6 +40,7 @@ let initializeState = [
     offValue: 0,
     image: "/images/products/105705191.jpg",
     price: 890000,
+    count:1,
   },
   {
     id: 4,
@@ -49,6 +52,7 @@ let initializeState = [
     offValue: 51,
     image: "/images/products/113013122.jpg",
     price: 29000,
+    count:1,
   },
 ];
 
